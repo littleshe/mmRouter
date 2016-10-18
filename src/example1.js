@@ -6,6 +6,7 @@ var vm = avalon.define({
     currPath: ''
 })
 avalon.router.add("/aaa", function (a) {
+	alert(JSON.stringify(this.query))
     vm.currPath = this.path
 })
 avalon.router.add("/bbb", function (a) {
@@ -20,6 +21,5 @@ avalon.router.add("/ddd/:ddd/:eee", function (a) {//:ddd为参数
 
 avalon.history.start({
     root: "/mmRouter"
-   
 })
 avalon.scan(document.body)

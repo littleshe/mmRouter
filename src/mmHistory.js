@@ -177,7 +177,10 @@ var mmHistory = {
         return this
     },
     getPath: function () {
-        var path = location.pathname.replace(this.options.root,'')
+		var origin = location.protocol + '//' + location.hostname
+		if (location.port)
+			origin += ':' + location.port 
+        var path = location.href.split(origin + this.options.root)[1] || ''
         if (path.charAt(0) !== '/') {
             path = '/' + path
         }
@@ -274,6 +277,7 @@ avalon.bind(document, "click", function (e) {
 
     e.preventDefault()
     //终于达到目的地
+	
     mmHistory.onHashChanged(href.replace('#!', ''), true)
 
 })
